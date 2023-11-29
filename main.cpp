@@ -1,10 +1,6 @@
 #include <iostream>
 #include <bitset>
 
-char rom[256];
-
-
-
 class Register {
 public:
     void setValue(char value) {
@@ -35,20 +31,21 @@ private:
     char bigValue;
 };
 
-Register a;
-Register x;
-Register y;
-bigRegister sp;
-bigRegister pc;
-Register sr;
 
-void control() {
+
+void control(Register& a, Register& x, Register& y, bigRegister& sp, bigRegister& pc, Register& sr, char* romptr) {
     char16_t address = (pc.getBig() << 8) | pc.getValue();
     
 }
 
 int main() {
+    char rom[65536];
+    char* romptr = &rom[0];
+    Register a, x, y, sr;
+    bigRegister sp, pc;
+
     sp.setBig(1);
     
-    
+    control(a, x, y, sp, pc, sr, romptr);
+
 }
